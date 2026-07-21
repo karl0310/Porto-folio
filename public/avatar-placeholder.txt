@@ -1,0 +1,1 @@
+Portrait placeholder — replace this file with the high-resolution portrait image and name it `avatar.jpg`.

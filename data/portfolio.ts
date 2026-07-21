@@ -2,6 +2,7 @@ export const SITE = {
   name: "TCHOUPE PEMBE KARL BRYAN",
   title: "Développeur d'applications Web, Technicien des systèmes de vidéosurveillance",
   subtitle: "Création de solutions numériques adaptées aux besoins des entreprises.",
+  avatar: "/avatar.jpg",
   contact: {
     email: "ton-email@exemple.com",
     whatsapp: "+237692860695",
@@ -42,12 +43,30 @@ export const SKILLS = [
 
 export const PROJECTS = [
   {
-    id: "p1",
-    title: "Projet Exemple",
-    description: "Description courte du projet, objectif et rôle.",
-    tech: ["Next.js","TypeScript","Tailwind","Three.js"],
-    image: "/projects/project1.jpg",
+    id: "kl-flyer",
+    title: "KL Security — Flyer & Marketing",
+    description: "Flyer produit pour KL Security présentant caméras, alarmes et services.",
+    tech: ["Marketing","Design"],
+    image: "/projects/kl-flyer.jpg",
     demo: "#",
-    repo: "https://github.com/karl0310/mon-projet"
+    repo: ""
+  },
+  {
+    id: "installation-1",
+    title: "Installation sur site — Échelle",
+    description: "Installation et configuration de caméras sur site (pose en hauteur).",
+    tech: ["CCTV","Réseau","Configuration"],
+    image: "/projects/installation-1.jpg",
+    demo: "#",
+    repo: ""
+  },
+  {
+    id: "installation-2",
+    title: "Équipement & Matériel — Détail",
+    description: "Gros plan du matériel et des panneaux solaires utilisés pour l'alimentation des caméras.",
+    tech: ["CCTV","Solar"],
+    image: "/projects/installation-2.jpg",
+    demo: "#",
+    repo: ""
   }
 ];
