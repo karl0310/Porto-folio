@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start",
+    "export": "next export",
+    "start": "next start -p $PORT",
     "lint": "next lint"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "next": "14.0.0",
