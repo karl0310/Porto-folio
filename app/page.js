@@ -6,18 +6,22 @@ const projets = [
   {
     numero: "01",
 
-    titre: "Application web — à venir",
+    titre: "KS Business Suite",
+
+    statut: "PROJET EN COURS",
 
     description:
-      "Un espace destiné à accueillir une de mes applications web avec son code source et sa démonstration en ligne.",
+      "Mini-ERP destiné aux organisations et aux entreprises. La plateforme vise à centraliser et simplifier la gestion des activités d’une structure, notamment l’organisation des opérations, le suivi des activités, la gestion des utilisateurs et des informations essentielles.",
 
     technologies: [
       "JavaScript",
       "React",
-      "Vercel",
+      "Gestion d'entreprise",
+      "ERP",
     ],
 
-    github: "#",
+    github:
+      "https://github.com/lksecurity8-crypto",
 
     live: "#",
   },
@@ -25,22 +29,50 @@ const projets = [
   {
     numero: "02",
 
-    titre: "Application web — à venir",
+    titre: "Presence Flow",
+
+    statut: "PROJET EN COURS",
 
     description:
-      "Une deuxième réalisation web sera présentée ici avec ses technologies et ses liens.",
+      "Application de gestion des présences destinée aux entreprises, établissements scolaires et autres organisations. Elle permet de structurer le suivi des présences et des absences afin de faciliter le contrôle et la gestion quotidienne.",
 
     technologies: [
       "JavaScript",
+      "React",
+      "Gestion des présences",
       "Web",
     ],
 
-    github: "#",
+    github:
+      "https://github.com/sergeabena20-max",
 
     live: "#",
   },
-];
 
+  {
+    numero: "03",
+
+    titre: "MN-PRESSING",
+
+    statut: "PROJET TERMINÉ",
+
+    description:
+      "Solution web dédiée à la gestion d’un pressing. L’application permet de digitaliser le suivi des clients, des commandes, des vêtements confiés, des statuts de traitement et de l’activité quotidienne.",
+
+    technologies: [
+      "JavaScript",
+      "React",
+      "Gestion",
+      "Vercel",
+    ],
+
+    github:
+      "https://github.com/ksds-bot",
+
+    live:
+      "https://mn-pressing.vercel.app",
+  },
+];
 export default function Home() {
 
   return (
