@@ -2,7 +2,9 @@ import Hero3D from "@/components/Hero3D";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 
+
 const projets = [
+
   {
     numero: "01",
 
@@ -11,13 +13,13 @@ const projets = [
     statut: "PROJET EN COURS",
 
     description:
-      "Mini-ERP destiné aux organisations et aux entreprises. La plateforme vise à centraliser et simplifier la gestion des activités d’une structure, notamment l’organisation des opérations, le suivi des activités, la gestion des utilisateurs et des informations essentielles.",
+      "Mini-ERP conçu pour accompagner les organisations et les entreprises dans la gestion de leurs activités. L'objectif est de proposer une plateforme centralisée permettant de mieux organiser les opérations, les utilisateurs, les informations et les différents processus internes.",
 
     technologies: [
       "JavaScript",
       "React",
-      "Gestion d'entreprise",
       "ERP",
+      "Gestion",
     ],
 
     github:
@@ -25,6 +27,7 @@ const projets = [
 
     live: "#",
   },
+
 
   {
     numero: "02",
@@ -34,12 +37,12 @@ const projets = [
     statut: "PROJET EN COURS",
 
     description:
-      "Application de gestion des présences destinée aux entreprises, établissements scolaires et autres organisations. Elle permet de structurer le suivi des présences et des absences afin de faciliter le contrôle et la gestion quotidienne.",
+      "Application web dédiée au suivi et à la gestion des présences. Elle est pensée pour répondre aux besoins des entreprises, établissements scolaires et autres organisations souhaitant centraliser le suivi des présences et des absences.",
 
     technologies: [
       "JavaScript",
       "React",
-      "Gestion des présences",
+      "Gestion",
       "Web",
     ],
 
@@ -49,6 +52,7 @@ const projets = [
     live: "#",
   },
 
+
   {
     numero: "03",
 
@@ -57,7 +61,7 @@ const projets = [
     statut: "PROJET TERMINÉ",
 
     description:
-      "Solution web dédiée à la gestion d’un pressing. L’application permet de digitaliser le suivi des clients, des commandes, des vêtements confiés, des statuts de traitement et de l’activité quotidienne.",
+      "Application web développée pour digitaliser la gestion d'un pressing. Elle permet de faciliter le suivi des clients, des commandes, des articles confiés, de leur état de traitement ainsi que l'organisation quotidienne de l'activité.",
 
     technologies: [
       "JavaScript",
@@ -72,7 +76,10 @@ const projets = [
     live:
       "https://mn-pressing.vercel.app",
   },
+
 ];
+
+
 export default function Home() {
 
   return (
@@ -92,6 +99,7 @@ export default function Home() {
           TPKB.
         </a>
 
+
         <nav>
 
           <a href="#a-propos">
@@ -108,6 +116,10 @@ export default function Home() {
 
           <a href="#installations">
             Installations
+          </a>
+
+          <a href="#parcours">
+            Parcours
           </a>
 
           <a href="#contact">
@@ -134,6 +146,7 @@ export default function Home() {
             PORTFOLIO • 2026
           </p>
 
+
           <h1>
 
             Tchoupe Pembe
@@ -144,6 +157,7 @@ export default function Home() {
 
           </h1>
 
+
           <p className="hero-subtitle">
 
             Développeur web · Informatique ·
@@ -151,18 +165,33 @@ export default function Home() {
 
           </p>
 
-          <a
-            className="primary-button"
-            href="#projets"
-          >
 
-            Découvrir mes projets
+          <div className="hero-actions">
 
-            <span>
-              ↗
-            </span>
+            <a
+              className="primary-button"
+              href="#projets"
+            >
 
-          </a>
+              Découvrir mes projets
+
+              <span>
+                ↗
+              </span>
+
+            </a>
+
+
+            <a
+              className="secondary-button"
+              href="#contact"
+            >
+
+              Me contacter
+
+            </a>
+
+          </div>
 
         </div>
 
@@ -170,8 +199,27 @@ export default function Home() {
         <Hero3D />
 
 
+        <div className="hero-side-text">
+          CRÉER
+          <br />
+          ·
+          <br />
+          DÉVELOPPER
+          <br />
+          ·
+          <br />
+          SÉCURISER
+        </div>
+
+
         <div className="scroll-indicator">
-          Défiler ↓
+
+          <span>
+            01
+          </span>
+
+          DÉFILER ↓
+
         </div>
 
       </section>
@@ -193,26 +241,43 @@ export default function Home() {
 
             Je suis Tchoupe Pembe Karl Bryan,
             technicien en maintenance et installation
-            des systèmes électroniques et titulaire d’un
+            des systèmes électroniques et titulaire d'un
             DUT en Génie Informatique.
 
           </p>
 
 
-          <p>
+          <div>
 
-            Je poursuis actuellement une Licence de
-            Technologie en Cybersécurité.
+            <p>
 
-            <br />
-            <br />
+              Mon parcours me permet de travailler
+              sur plusieurs domaines complémentaires
+              de l'informatique et des systèmes
+              électroniques.
 
-            Mon profil se situe à la rencontre du
-            développement web, de la maintenance
-            informatique, de la sécurité des systèmes
-            et des installations techniques.
+            </p>
 
-          </p>
+
+            <p>
+
+              Je m'intéresse particulièrement au
+              développement web, à la cybersécurité,
+              à la maintenance informatique et aux
+              installations techniques.
+
+            </p>
+
+
+            <p>
+
+              Je poursuis actuellement une Licence
+              de Technologie spécialisée en
+              Cybersécurité.
+
+            </p>
+
+          </div>
 
         </div>
 
@@ -231,67 +296,119 @@ export default function Home() {
 
         <div className="skill-grid">
 
-          {[
-            [
-              "01",
-              "Développement web",
-              "Création d’applications et d’interfaces web.",
-            ],
 
-            [
-              "02",
-              "Cybersécurité",
-              "Bases en sécurité des systèmes d’information.",
-            ],
+          <article className="skill-card">
 
-            [
-              "03",
-              "Maintenance informatique",
-              "Diagnostic, maintenance et assistance informatique.",
-            ],
+            <span>
+              01
+            </span>
 
-            [
-              "04",
-              "Vidéosurveillance",
-              "Installation, configuration et mise en service de systèmes de surveillance.",
-            ],
+            <h3>
+              Développement web
+            </h3>
 
-            [
-              "05",
-              "Systèmes électroniques",
-              "Maintenance et installation de systèmes électroniques.",
-            ],
+            <p>
+              Conception et développement
+              d'applications et d'interfaces web
+              modernes.
+            </p>
 
-            [
-              "06",
-              "Résolution de problèmes",
-              "Capacité d’adaptation et recherche de solutions.",
-            ],
+          </article>
 
-          ].map(
-            ([numero, titre, description]) => (
 
-              <article
-                className="skill-card"
-                key={numero}
-              >
+          <article className="skill-card">
 
-                <span>
-                  {numero}
-                </span>
+            <span>
+              02
+            </span>
 
-                <h3>
-                  {titre}
-                </h3>
+            <h3>
+              Cybersécurité
+            </h3>
 
-                <p>
-                  {description}
-                </p>
+            <p>
+              Compréhension des principes de
+              sécurité informatique et protection
+              des systèmes.
+            </p>
 
-              </article>
+          </article>
 
-            )
-          )}
+
+          <article className="skill-card">
+
+            <span>
+              03
+            </span>
+
+            <h3>
+              Maintenance informatique
+            </h3>
+
+            <p>
+              Diagnostic, maintenance et
+              résolution de problèmes
+              informatiques.
+            </p>
+
+          </article>
+
+
+          <article className="skill-card">
+
+            <span>
+              04
+            </span>
+
+            <h3>
+              Réseaux informatiques
+            </h3>
+
+            <p>
+              Installation et compréhension des
+              infrastructures et réseaux
+              informatiques.
+            </p>
+
+          </article>
+
+
+          <article className="skill-card">
+
+            <span>
+              05
+            </span>
+
+            <h3>
+              Vidéosurveillance
+            </h3>
+
+            <p>
+              Installation et mise en service
+              de systèmes de vidéosurveillance.
+            </p>
+
+          </article>
+
+
+          <article className="skill-card">
+
+            <span>
+              06
+            </span>
+
+            <h3>
+              Systèmes électroniques
+            </h3>
+
+            <p>
+              Installation, maintenance et
+              intervention sur différents systèmes
+              électroniques.
+            </p>
+
+          </article>
+
 
         </div>
 
@@ -308,27 +425,41 @@ export default function Home() {
         title="Mes projets web"
       >
 
-        <div className="project-grid">
+        <div className="project-intro">
 
-          {projets.map((projet) => (
+          <p className="lead">
 
-            <ProjectCard
-              key={projet.numero}
-              {...projet}
-            />
+            Des solutions numériques pensées
+            pour répondre à des problèmes
+            concrets.
 
-          ))}
+          </p>
+
+          <p>
+
+            Cette section accueillera également
+            les captures d'écran de mes projets.
+            Elles seront ajoutées ultérieurement.
+
+          </p>
 
         </div>
 
 
-        <p className="placeholder-note">
+        <div className="project-grid">
 
-          Les véritables projets seront ajoutés
-          avec leurs liens GitHub et leurs
-          démonstrations Vercel.
+          {projets.map(
+            (projet) => (
 
-        </p>
+              <ProjectCard
+                key={projet.numero}
+                {...projet}
+              />
+
+            )
+          )}
+
+        </div>
 
       </Section>
 
@@ -347,20 +478,17 @@ export default function Home() {
 
           <p className="lead">
 
-            Une galerie dédiée à mes
-            réalisations techniques.
+            Des réalisations techniques
+            réalisées sur le terrain.
 
           </p>
 
 
           <p>
 
-            Les photos de mes installations
-            seront ajoutées prochainement.
-
-            La structure du portfolio est prévue
-            pour accueillir plusieurs images par
-            réalisation.
+            Cette galerie sera prochainement
+            complétée avec les photographies
+            de mes différentes installations.
 
           </p>
 
@@ -369,39 +497,66 @@ export default function Home() {
 
         <div className="installation-grid">
 
-          {[
-            "Vidéosurveillance",
-            "Installations électroniques",
-            "Décoration intérieure & peinture",
-          ].map((installation, index) => (
 
-            <article
-              className="installation-card"
-              key={installation}
-            >
+          <article className="installation-card">
 
-              <div className="image-placeholder">
+            <div className="image-placeholder">
 
-                PHOTO{" "}
+              PHOTO 01
 
-                {String(index + 1).padStart(2, "0")}
+            </div>
 
-              </div>
+            <h3>
+              Vidéosurveillance
+            </h3>
 
-              <h3>
-                {installation}
-              </h3>
+            <p>
+              Photos et détails de l'installation
+              à ajouter.
+            </p>
 
-              <p>
+          </article>
 
-                Photos et détails de la
-                réalisation à ajouter.
 
-              </p>
+          <article className="installation-card">
 
-            </article>
+            <div className="image-placeholder">
 
-          ))}
+              PHOTO 02
+
+            </div>
+
+            <h3>
+              Installations électroniques
+            </h3>
+
+            <p>
+              Photos et détails de l'installation
+              à ajouter.
+            </p>
+
+          </article>
+
+
+          <article className="installation-card">
+
+            <div className="image-placeholder">
+
+              PHOTO 03
+
+            </div>
+
+            <h3>
+              Maintenance informatique
+            </h3>
+
+            <p>
+              Photos et détails de l'intervention
+              à ajouter.
+            </p>
+
+          </article>
+
 
         </div>
 
@@ -420,6 +575,7 @@ export default function Home() {
 
         <div className="timeline">
 
+
           <div>
 
             <span>
@@ -427,10 +583,8 @@ export default function Home() {
             </span>
 
             <h3>
-
               BT — Maintenance et Installation
               des Systèmes Électroniques
-
             </h3>
 
             <p>
@@ -468,10 +622,9 @@ export default function Home() {
             </h3>
 
             <p>
-
-              Rénovation complète des systèmes
-              électroniques d’une maison.
-
+              Participation à la rénovation
+              complète des systèmes électroniques
+              d'une maison.
             </p>
 
           </div>
@@ -488,9 +641,7 @@ export default function Home() {
             </h3>
 
             <p>
-
               Technicien informatique.
-
             </p>
 
           </div>
@@ -499,14 +650,12 @@ export default function Home() {
           <div>
 
             <span>
-              2026 → aujourd’hui
+              2026 → aujourd'hui
             </span>
 
             <h3>
-
               Licence de Technologie —
               Cybersécurité
-
             </h3>
 
             <p>
@@ -514,6 +663,7 @@ export default function Home() {
             </p>
 
           </div>
+
 
         </div>
 
@@ -536,6 +686,7 @@ export default function Home() {
             01
           </span>
 
+
           <div>
 
             <h3>
@@ -543,11 +694,9 @@ export default function Home() {
             </h3>
 
             <p>
-
-              Connaissances fondamentales
-              en sécurité des systèmes
-              d’information.
-
+              Certification attestant de
+              connaissances fondamentales
+              en cybersécurité.
             </p>
 
           </div>
@@ -586,6 +735,7 @@ export default function Home() {
 
         <div className="contact-grid">
 
+
           <div>
 
             <p>
@@ -609,7 +759,9 @@ export default function Home() {
               Email
             </p>
 
-            <a href="mailto:dollarbryan8@gmail.com">
+            <a
+              href="mailto:dollarbryan8@gmail.com"
+            >
               dollarbryan8@gmail.com
             </a>
 
@@ -619,14 +771,19 @@ export default function Home() {
           <div>
 
             <p>
-              Réseaux
+              Réseaux sociaux
             </p>
 
             <span>
-              GitHub · TikTok (à ajouter)
+              TikTok — à ajouter
+            </span>
+
+            <span>
+              GitHub — à ajouter
             </span>
 
           </div>
+
 
         </div>
 
@@ -652,6 +809,7 @@ export default function Home() {
         </span>
 
       </footer>
+
 
     </main>
 
