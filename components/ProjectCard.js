@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function ProjectCard({
   numero,
   titre,
@@ -7,11 +11,40 @@ export default function ProjectCard({
   github,
   live,
 }) {
-  const projetDisponible = live && live !== "#";
-  const githubDisponible = github && github !== "#";
+  const projetDisponible =
+    live && live !== "#";
+
+  const githubDisponible =
+    github && github !== "#";
 
   return (
-    <article className="project-card">
+    <motion.article
+      className="project-card"
+
+      initial={{
+        opacity: 0,
+        y: 80,
+      }}
+
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+
+      whileHover={{
+        y: -12,
+      }}
+
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
 
       <div className="project-top">
 
@@ -25,35 +58,55 @@ export default function ProjectCard({
 
       </div>
 
-      <div className="project-preview">
+
+      <motion.div
+        className="project-preview"
+
+        whileHover={{
+          scale: 1.02,
+        }}
+
+        transition={{
+          duration: 0.4,
+        }}
+      >
+
+        <div className="project-orb" />
 
         <span>
           {titre}
         </span>
 
-      </div>
+      </motion.div>
+
 
       <h3>
         {titre}
       </h3>
 
+
       <p>
         {description}
       </p>
 
+
       <div className="tags">
 
-        {technologies.map((technologie) => (
-          <span key={technologie}>
-            {technologie}
-          </span>
-        ))}
+        {technologies.map(
+          (technologie) => (
+            <span key={technologie}>
+              {technologie}
+            </span>
+          )
+        )}
 
       </div>
+
 
       <div className="project-links">
 
         {githubDisponible && (
+
           <a
             href={github}
             target="_blank"
@@ -61,9 +114,12 @@ export default function ProjectCard({
           >
             GitHub ↗
           </a>
+
         )}
 
+
         {projetDisponible && (
+
           <a
             href={live}
             target="_blank"
@@ -71,10 +127,11 @@ export default function ProjectCard({
           >
             Voir le projet ↗
           </a>
+
         )}
 
       </div>
 
-    </article>
+    </motion.article>
   );
 }
