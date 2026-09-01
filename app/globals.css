@@ -699,3 +699,56 @@ footer strong {
   }
 
 }
+
+.project-status {
+  color: #7d899b;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
+
+.project-card:hover .project-status {
+  color: var(--bleu);
+}
+
+.project-preview {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-preview::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background: rgba(38, 132, 255, 0.12);
+
+  filter: blur(35px);
+
+  animation: projectGlow 5s ease-in-out infinite alternate;
+}
+
+.project-preview span {
+  position: relative;
+  z-index: 2;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@keyframes projectGlow {
+  from {
+    transform: translate(-70px, -30px);
+  }
+
+  to {
+    transform: translate(100px, 40px);
+  }
+}
