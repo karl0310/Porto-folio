@@ -31,9 +31,7 @@ function ObjetPrincipal() {
   return (
     <group ref={objet}>
 
-      <Icosahedron
-        args={[1.45, 5]}
-      >
+      <Icosahedron args={[1.45, 5]}>
         <meshStandardMaterial
           metalness={0.9}
           roughness={0.12}
@@ -43,17 +41,8 @@ function ObjetPrincipal() {
       </Icosahedron>
 
       <Torus
-        args={[
-          1.9,
-          0.018,
-          32,
-          160,
-        ]}
-        rotation={[
-          Math.PI / 2,
-          0,
-          0,
-        ]}
+        args={[1.9, 0.018, 32, 160]}
+        rotation={[Math.PI / 2, 0, 0]}
       >
         <meshStandardMaterial
           emissive="#2684ff"
@@ -63,17 +52,8 @@ function ObjetPrincipal() {
       </Torus>
 
       <Torus
-        args={[
-          2.15,
-          0.012,
-          32,
-          160,
-        ]}
-        rotation={[
-          0,
-          Math.PI / 3,
-          0,
-        ]}
+        args={[2.15, 0.012, 32, 160]}
+        rotation={[0, Math.PI / 3, 0]}
       >
         <meshStandardMaterial
           emissive="#ffffff"
@@ -86,12 +66,10 @@ function ObjetPrincipal() {
   );
 }
 
-
 function Particules() {
   const particules = [];
 
   for (let i = 0; i < 80; i++) {
-
     const angle =
       Math.random() * Math.PI * 2;
 
@@ -111,16 +89,11 @@ function Particules() {
       <Sphere
         key={i}
         args={[
-          0.015 +
-            Math.random() * 0.035,
+          0.015 + Math.random() * 0.035,
           8,
           8,
         ]}
-        position={[
-          x,
-          y,
-          z,
-        ]}
+        position={[x, y, z]}
       >
         <meshStandardMaterial
           emissive="#2684ff"
@@ -139,41 +112,24 @@ function Particules() {
   );
 }
 
-
 function Scene() {
-
   return (
     <>
-
-      <ambientLight
-        intensity={0.7}
-      />
+      <ambientLight intensity={0.7} />
 
       <directionalLight
-        position={[
-          5,
-          5,
-          5,
-        ]}
+        position={[5, 5, 5]}
         intensity={3}
       />
 
       <pointLight
-        position={[
-          -4,
-          2,
-          3,
-        ]}
+        position={[-4, 2, 3]}
         intensity={15}
         distance={8}
       />
 
       <pointLight
-        position={[
-          4,
-          -2,
-          -2,
-        ]}
+        position={[4, -2, -2]}
         intensity={10}
         distance={7}
       />
@@ -193,9 +149,7 @@ function Scene() {
         rotationIntensity={0.15}
         floatIntensity={0.4}
       >
-
         <ObjetPrincipal />
-
       </Float>
 
       <Particules />
@@ -208,36 +162,25 @@ function Scene() {
         autoRotate
         autoRotateSpeed={0.25}
       />
-
     </>
   );
 }
 
-
 export default function Hero3D() {
-
   return (
     <div
       className="hero-3d"
       aria-label="Animation 3D"
     >
-
       <Canvas
         dpr={[1, 2]}
         camera={{
-          position: [
-            0,
-            0,
-            6,
-          ],
+          position: [0, 0, 6],
           fov: 42,
         }}
       >
-
         <Scene />
-
       </Canvas>
-
     </div>
   );
 }
