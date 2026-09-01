@@ -2,185 +2,235 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
+  Environment,
   Float,
   OrbitControls,
-  Stars,
-  Sphere,
-  Torus,
-  Icosahedron,
+  Sparkles,
+  useGLTF,
+  ContactShadows,
 } from "@react-three/drei";
 
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 
-function ObjetPrincipal() {
-  const objet = useRef();
+
+// ============================================================
+// MODÈLE 3D DU DÉVELOPPEUR
+// ============================================================
+
+function DeveloperDesk() {
+  const group = useRef();
+
+  const { scene } = useGLTF("/3d/developer-desk.glb");
 
   useFrame((state) => {
-    if (!objet.current) return;
+    if (!group.current) return;
 
-    objet.current.rotation.x =
-      state.clock.elapsedTime * 0.18;
+    // Petit mouvement de respiration / flottement
+    group.current.position.y =
+      Math.sin(state.clock.elapsedTime * 1.2) * 0.035;
 
-    objet.current.rotation.y =
-      state.clock.elapsedTime * 0.28;
-
-    objet.current.position.y =
-      Math.sin(state.clock.elapsedTime * 1.2) * 0.12;
+    // Rotation très légère
+    group.current.rotation.y =
+      Math.sin(state.clock.elapsedTime * 0.25) * 0.025;
   });
 
   return (
-    <group ref={objet}>
-
-      <Icosahedron args={[1.45, 5]}>
-        <meshStandardMaterial
-          metalness={0.9}
-          roughness={0.12}
-          emissive="#071b38"
-          emissiveIntensity={2}
-        />
-      </Icosahedron>
-
-      <Torus
-        args={[1.9, 0.018, 32, 160]}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
-        <meshStandardMaterial
-          emissive="#2684ff"
-          emissiveIntensity={8}
-          metalness={0.8}
-        />
-      </Torus>
-
-      <Torus
-        args={[2.15, 0.012, 32, 160]}
-        rotation={[0, Math.PI / 3, 0]}
-      >
-        <meshStandardMaterial
-          emissive="#ffffff"
-          emissiveIntensity={5}
-          metalness={0.8}
-        />
-      </Torus>
-
+    <group
+      ref={group}
+      position={[0, -1.55, 0]}
+      scale={2.25}
+    >
+      <primitive object={scene} />
     </group>
   );
 }
 
-function Particules() {
-  const particules = [];
 
-  for (let i = 0; i < 80; i++) {
-    const angle =
-      Math.random() * Math.PI * 2;
-
-    const distance =
-      2.8 + Math.random() * 3;
-
-    const x =
-      Math.cos(angle) * distance;
-
-    const y =
-      (Math.random() - 0.5) * 4;
-
-    const z =
-      Math.sin(angle) * distance;
-
-    particules.push(
-      <Sphere
-        key={i}
-        args={[
-          0.015 + Math.random() * 0.035,
-          8,
-          8,
-        ]}
-        position={[x, y, z]}
-      >
-        <meshStandardMaterial
-          emissive="#2684ff"
-          emissiveIntensity={
-            2 + Math.random() * 5
-          }
-        />
-      </Sphere>
-    );
-  }
-
-  return (
-    <group>
-      {particules}
-    </group>
-  );
-}
+// ============================================================
+// SCÈNE 3D
+// ============================================================
 
 function Scene() {
+  const sceneGroup = useRef();
+
+  useFrame((state) => {
+    if (!sceneGroup.current) return;
+
+    // Mouvement subtil de toute la scène
+    sceneGroup.current.rotation.y =
+      Math.sin(state.clock.elapsedTime * 0.18) * 0.025;
+
+    // Effet léger de parallaxe suivant la souris
+    const mouseX = state.pointer.x;
+    const mouseY = state.pointer.y;
+
+    sceneGroup.current.rotation.x =
+      mouseY * 0.015;
+
+    sceneGroup.current.rotation.z =
+      mouseX * -0.015;
+  });
+
   return (
-    <>
-      <ambientLight intensity={0.7} />
+    <group ref={sceneGroup}>
+
+      {/* ---------------------------------------------------- */}
+      {/* ÉCLAIRAGE PRINCIPAL                                  */}
+      {/* ---------------------------------------------------- */}
+
+      <ambientLight intensity={1.2} />
 
       <directionalLight
-        position={[5, 5, 5]}
+        position={[4, 6, 5]}
         intensity={3}
       />
 
       <pointLight
-        position={[-4, 2, 3]}
-        intensity={15}
+        position={[-3, 2, 3]}
+        intensity={12}
         distance={8}
       />
 
       <pointLight
-        position={[4, -2, -2]}
-        intensity={10}
+        position={[4, 1, -2]}
+        intensity={8}
         distance={7}
       />
 
-      <Stars
-        radius={10}
-        depth={5}
-        count={700}
-        factor={1.5}
-        saturation={0}
-        fade
-        speed={0.4}
-      />
+
+      {/* ---------------------------------------------------- */}
+      {/* ENVIRONNEMENT                                       */}
+      {/* ---------------------------------------------------- */}
+
+      <Environment preset="city" />
+
+
+      {/* ---------------------------------------------------- */}
+      {/* PERSONNAGE + BUREAU                                 */}
+      {/* ---------------------------------------------------- */}
 
       <Float
-        speed={1.4}
-        rotationIntensity={0.15}
-        floatIntensity={0.4}
+        speed={1.1}
+        rotationIntensity={0.08}
+        floatIntensity={0.12}
       >
-        <ObjetPrincipal />
+        <Suspense fallback={null}>
+          <DeveloperDesk />
+        </Suspense>
       </Float>
 
-      <Particules />
 
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        enableDamping
-        dampingFactor={0.04}
-        autoRotate
-        autoRotateSpeed={0.25}
+      {/* ---------------------------------------------------- */}
+      {/* PARTICULES                                          */}
+      {/* ---------------------------------------------------- */}
+
+      <Sparkles
+        count={90}
+        scale={[6, 5, 5]}
+        size={1.8}
+        speed={0.25}
       />
-    </>
+
+
+      {/* ---------------------------------------------------- */}
+      {/* OMBRE AU SOL                                        */}
+      {/* ---------------------------------------------------- */}
+
+      <ContactShadows
+        position={[0, -1.7, 0]}
+        opacity={0.45}
+        scale={7}
+        blur={2.8}
+        far={4}
+      />
+
+    </group>
   );
 }
+
+
+// ============================================================
+// HERO 3D
+// ============================================================
 
 export default function Hero3D() {
   return (
     <div
       className="hero-3d"
-      aria-label="Animation 3D"
+      style={{
+        width: "100%",
+        height: "100%",
+        minHeight: "600px",
+        position: "relative",
+      }}
     >
+
       <Canvas
+        shadows
         dpr={[1, 2]}
         camera={{
-          position: [0, 0, 6],
-          fov: 42,
+          position: [0, 0.3, 7],
+          fov: 38,
+        }}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
         }}
       >
-        <Scene />
+
+        <Suspense fallback={null}>
+
+          <Scene />
+
+        </Suspense>
+
+
+        {/* -------------------------------------------------- */}
+        {/* CONTRÔLES                                         */}
+        {/* -------------------------------------------------- */}
+
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          enableDamping
+          dampingFactor={0.05}
+          minPolarAngle={Math.PI / 2.35}
+          maxPolarAngle={Math.PI / 1.7}
+          rotateSpeed={0.35}
+        />
+
       </Canvas>
+
+
+      {/* ---------------------------------------------------- */}
+      {/* LUEUR D'ARRIÈRE-PLAN                                */}
+      {/* ---------------------------------------------------- */}
+
+      <div
+        style={{
+          position: "absolute",
+          width: "420px",
+          height: "420px",
+          borderRadius: "50%",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          background:
+            "radial-gradient(circle, rgba(30,120,255,0.16) 0%, rgba(30,120,255,0.05) 40%, transparent 72%)",
+          filter: "blur(25px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
     </div>
   );
 }
+
+
+// ============================================================
+// PRÉCHARGEMENT DU MODÈLE
+// ============================================================
+
+useGLTF.preload("/3d/developer-desk.glb");
