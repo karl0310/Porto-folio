@@ -752,3 +752,44 @@ footer strong {
     transform: translate(100px, 40px);
   }
 }
+
+.project-orb {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background: rgba(
+    38,
+    132,
+    255,
+    0.18
+  );
+
+  filter: blur(40px);
+
+  animation:
+    floatingOrb
+    6s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+@keyframes floatingOrb {
+
+  0% {
+    transform:
+      translate(-70px, -30px)
+      scale(0.8);
+  }
+
+  100% {
+    transform:
+      translate(80px, 40px)
+      scale(1.2);
+  }
+
+}
