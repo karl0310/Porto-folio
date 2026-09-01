@@ -1,11 +1,15 @@
 export default function ProjectCard({
   numero,
   titre,
+  statut,
   description,
   technologies,
   github,
   live,
 }) {
+  const projetDisponible = live && live !== "#";
+  const githubDisponible = github && github !== "#";
+
   return (
     <article className="project-card">
 
@@ -15,16 +19,18 @@ export default function ProjectCard({
           {numero}
         </span>
 
-        <span>
-          PROJET WEB
+        <span className="project-status">
+          {statut}
         </span>
 
       </div>
 
       <div className="project-preview">
+
         <span>
-          Aperçu du projet
+          {titre}
         </span>
+
       </div>
 
       <h3>
@@ -47,21 +53,25 @@ export default function ProjectCard({
 
       <div className="project-links">
 
-        <a
-          href={github}
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub ↗
-        </a>
+        {githubDisponible && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub ↗
+          </a>
+        )}
 
-        <a
-          href={live}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Projet en ligne ↗
-        </a>
+        {projetDisponible && (
+          <a
+            href={live}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Voir le projet ↗
+          </a>
+        )}
 
       </div>
 
