@@ -58,7 +58,6 @@ export default function ProjectCard({
 
       </div>
 
-
       <motion.div
         className="project-preview"
 
@@ -79,16 +78,13 @@ export default function ProjectCard({
 
       </motion.div>
 
-
       <h3>
         {titre}
       </h3>
 
-
       <p>
         {description}
       </p>
-
 
       <div className="tags">
 
@@ -102,11 +98,9 @@ export default function ProjectCard({
 
       </div>
 
-
       <div className="project-links">
 
         {githubDisponible && (
-
           <a
             href={github}
             target="_blank"
@@ -114,12 +108,9 @@ export default function ProjectCard({
           >
             GitHub ↗
           </a>
-
         )}
 
-
         {projetDisponible && (
-
           <a
             href={live}
             target="_blank"
@@ -127,7 +118,6 @@ export default function ProjectCard({
           >
             Voir le projet ↗
           </a>
-
         )}
 
       </div>
